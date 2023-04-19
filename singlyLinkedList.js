@@ -26,13 +26,11 @@ class LinkedList {
   }
   unsift(value) {
     if (!this.head) return this.push(value);
-    else {
-      const newNode = new Node(value);
-      let oldhead = this.head;
-      this.head = newNode;
-      newNode.next = oldhead;
-      this.lenght++;
-    }
+    const newNode = new Node(value);
+    let oldhead = this.head;
+    this.head = newNode;
+    newNode.next = oldhead;
+    this.lenght++;
   }
 
   get shift() {
@@ -44,22 +42,20 @@ class LinkedList {
   get pop() {
     if (!this.head)
       return console.log("Are you kidding me?,you can't pop out of empty List");
-    else {
-      if (this.head === this.tail) {
-        this.head = null;
-        this.tail = this.head;
-        this.lenght--;
-      } else {
-        let prevNode = this.head;
-        let currNode = this.head.next;
-        while (currNode.next !== null) {
-          prevNode = currNode;
-          currNode = currNode.next;
-        }
-        this.tail = prevNode;
-        this.tail.next = null;
-        this.lenght--;
+    if (this.head === this.tail) {
+      this.head = null;
+      this.tail = this.head;
+      this.lenght--;
+    } else {
+      let prevNode = this.head;
+      let currNode = this.head.next;
+      while (currNode.next !== null) {
+        prevNode = currNode;
+        currNode = currNode.next;
       }
+      this.tail = prevNode;
+      this.tail.next = null;
+      this.lenght--;
     }
   }
   getByIndex(index) {
