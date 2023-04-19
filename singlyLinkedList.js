@@ -9,43 +9,43 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
-    this.lenght = 0;
+    this.length = 0;
   }
   push(value) {
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
-      this.lenght++;
+      this.length++;
     } else {
       let oldTail = this.tail;
       this.tail = newNode;
       oldTail.next = newNode;
-      this.lenght++;
+      this.length++;
     }
   }
-  unsift(value) {
+  unshift(value) {
     if (!this.head) return this.push(value);
     const newNode = new Node(value);
     let oldhead = this.head;
     this.head = newNode;
     newNode.next = oldhead;
-    this.lenght++;
+    this.length++;
   }
 
   get shift() {
+    if (!this.head) return "Empty List can't remove item";
     let oldhead = this.head;
     this.head = oldhead.next;
     oldhead.next = null;
-    this.lenght--;
+    this.length--;
   }
   get pop() {
-    if (!this.head)
-      return console.log("Are you kidding me?,you can't pop out of empty List");
+    if (!this.head) return console.log("you can't pop out of empty List");
     if (this.head === this.tail) {
       this.head = null;
       this.tail = this.head;
-      this.lenght--;
+      this.length--;
     } else {
       let prevNode = this.head;
       let currNode = this.head.next;
@@ -55,10 +55,11 @@ class LinkedList {
       }
       this.tail = prevNode;
       this.tail.next = null;
-      this.lenght--;
+      this.length--;
     }
   }
   getByIndex(index) {
+    if (index < 0) return;
     let currHead = this.head;
     for (let i = 0; i < index; i++) {
       if (!currHead.next) return console.log("invalid index");
@@ -68,7 +69,7 @@ class LinkedList {
   }
 
   insertByIndex(index, value) {
-    if (!this.head) return this.unsift(value);
+    if (!this.head) return this.unshift(value);
     const newNode = new Node(value);
     const prevNode = this.getByIndex(index - 1);
     const target = this.getByIndex(index);
@@ -84,6 +85,7 @@ class LinkedList {
     const nextNode = this.getByIndex(index + 1);
     prevNode.next = nextNode;
     target.next = null;
+    this.length--;
     return true;
   }
   setByIndex(index, value) {
@@ -101,48 +103,6 @@ class LinkedList {
 }
 
 let list = new LinkedList();
-// list.push(1);
-// list.push(2);
-// list.traverse(list.head);
-// console.log("------------------------------------------------");
-// list.push(3);
-// list.unsift(0);
-// list.traverse(list.head);
-// console.log("--------------------------------------------------");
-// list.push(4);
-// list.traverse(list.head);
-// console.log("---------------------------------------------------");
-// list.shift;
-// list.traverse(list.head);
-list.push(1);
-list.unsift(0);
-list.push(3);
 list.traverse(list.head);
-console.log("----------------------------------------------------");
-list.pop;
-list.traverse(list.head);
-console.log("----------------------------------------------------");
-list.pop;
-list.traverse(list.head);
-console.log("----------------------------------------------------");
-list.pop;
-list.traverse(list.head);
-console.log("----------------------------------------------------");
-// list.push(0);
-// list.push(1);
-// list.push(2);
-// list.push(3);
-console.log("-----------------------after pushing------------------");
-//console.log(list.getByIndex(3));
-console.log("------------------------------------------------------");
-list.insertByIndex(3, 5);
-list.push(1);
-list.unsift(0);
-list.traverse(list.head);
-console.log("----------------------------------------------------");
-//list.reomveByIndex(0);
-list.reomveByIndex(1);
-list.traverse(list.head);
-console.log("----------------------------------------------------");
-list.setByIndex(1, 1);
-list.traverse(list.head);
+list.shift;
+list.getByIndex(-1);
