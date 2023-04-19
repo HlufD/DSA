@@ -101,8 +101,3 @@ class LinkedList {
     this.traverse(head.next);
   }
 }
-
-let list = new LinkedList();
-list.traverse(list.head);
-list.shift;
-list.getByIndex(-1);
