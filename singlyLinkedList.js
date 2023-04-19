@@ -78,7 +78,7 @@ class LinkedList {
     return true;
   }
 
-  reomveByIndex(index) {
+  removeByIndex(index) {
     if (index === 0) return this.shift;
     const target = this.getByIndex(index);
     const prevNode = this.getByIndex(index - 1);
