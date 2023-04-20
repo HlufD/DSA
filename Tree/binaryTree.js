@@ -41,13 +41,14 @@ const depthFirst = (root) => {
 };
 //console.log(depthFirst(a));
 
-const depthFirstRecursive = function (root) {
+const depthFirstRecursive = function (root, result) {
   if (root === null) return [];
-  console.log(root.value);
-  depthFirstRecursive(root.right);
-  depthFirstRecursive(root.left);
+  result.push(root.value);
+  depthFirstRecursive(root.right, result);
+  depthFirstRecursive(root.left, result);
+  return result;
 };
-depthFirstRecursive(a);
+depthFirstRecursive(a, []);
 
 /*       a
         / \
