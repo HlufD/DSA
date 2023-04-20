@@ -9,15 +9,15 @@ class Node {
 let a = new Node("A");
 let b = new Node("B");
 let c = new Node("C");
-let d = new Node("D");
 let e = new Node("E");
 let f = new Node("F");
+let g = new Node("G");
 
 a.left = b;
 a.right = c;
-b.left = d;
-b.right = e;
-c.right = f;
+b.left = e;
+c.left = f;
+c.right = g;
 
 const depthFirst = (root) => {
   let stack = [root];
@@ -44,11 +44,11 @@ const depthFirst = (root) => {
 const depthFirstRecursive = function (root, result) {
   if (root === null) return [];
   result.push(root.value);
-  depthFirstRecursive(root.right, result);
-  depthFirstRecursive(root.left, result);
+  if (root.left) depthFirstRecursive(root.left, result);
+  if (root.right) depthFirstRecursive(root.right, result);
   return result;
 };
-depthFirstRecursive(a, []);
+console.log(depthFirstRecursive(a, []));
 
 /*       a
         / \
