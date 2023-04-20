@@ -39,8 +39,15 @@ const depthFirst = (root) => {
   }
   return result;
 };
+//console.log(depthFirst(a));
 
-console.log(depthFirst(a));
+const depthFirstRecursive = function (root) {
+  if (root === null) return [];
+  console.log(root.value);
+  depthFirstRecursive(root.right);
+  depthFirstRecursive(root.left);
+};
+depthFirstRecursive(a);
 
 /*       a
         / \
